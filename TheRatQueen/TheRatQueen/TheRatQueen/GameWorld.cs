@@ -16,8 +16,8 @@ namespace TheRatQueen
         static  GraphicsDeviceManager graphics;
 
 
-        List<GameObject> go = new List<GameObject>();
-        List<GameObject> RemoveObject = new List<GameObject>();
+      public static List<GameObject> TobeAddGo = new List<GameObject>();
+      public static List<GameObject> RemoveObject = new List<GameObject>();
 
         SpriteBatch spriteBatch;
 
@@ -33,6 +33,16 @@ namespace TheRatQueen
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
             Content.RootDirectory = "Content";
+        }
+         
+        public static void addGameObject(GameObject game)
+        {
+            TobeAddGo.Add(game);
+        }
+
+        public static void RemoveGameObject(GameObject game)
+        {
+            RemoveObject.Add8
         }
 
         public static Rectangle ScreenSize

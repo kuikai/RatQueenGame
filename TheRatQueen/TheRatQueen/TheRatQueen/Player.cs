@@ -12,31 +12,51 @@ namespace TheRatQueen
 {
    public class Player : Componet
     {
-
-
-        
-
-        public float speed = 100;
-      
+  
+        public float speed = 100; 
         public Vector2 StartPos;
+        public float size = 0.2f;
         float deltaTime;
+        public float RotationAngle { get; set; }
+     
 
-
-        public Player()
+        public Player( )
         {
           
             StartPos = new Vector2(GameWorld.ScreenSize.Width/2,GameWorld.ScreenSize.Height/2);
         }
+        public Player(Vector2 pos)
+        {
+            this.StartPos = pos;
+        }
+        public void SetRotationAngle(Vector2 directon)
+        {    
+            if(directon.X < 0 )
+            {
+                GameObject.transform.s = SpriteEffects.FlipHorizontally;
+            }
+            else
+            {
+                GameObject.transform.s = SpriteEffects.None;
+            }
+            
+         // GameObject.transform.rotetion =  (float)Math.Atan2(directon.Y, directon.X);
+
+        }
+        public void rotetion()
+        {
+            
+        }
         public void Move( Vector2 velocity)
         {
-           
-
+          
             GameObject.transform.Position += velocity;
+            SetRotationAngle(velocity);
         }
          
         public override void Update(GameTime gameTime)
         {
-
+            
             InputHandler.Instance.Execute(this);
 
             deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
@@ -45,6 +65,7 @@ namespace TheRatQueen
         {
             base.Attach(gameObject);
             gameObject.transform.Position = StartPos;
+            gameObject.transform.Siz = size;
         }
     }
 }

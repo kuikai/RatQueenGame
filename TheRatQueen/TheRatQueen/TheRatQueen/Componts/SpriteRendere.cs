@@ -29,7 +29,7 @@ namespace TheRatQueen
         public override void Draw(SpriteBatch spriteBatch)
         {
           
-            spriteBatch.Draw(sprite, GameObject.transform.Position, rectangle, Color.White, 0, orgin, 0.2f, SpriteEffects.None, 0);
+            spriteBatch.Draw(sprite, GameObject.transform.Position, rectangle, Color.White,GameObject.transform.rotetion , orgin, GameObject.transform.Siz, GameObject.transform.s, 0);
         }
 
         public override void LoadContent(ContentManager content)
