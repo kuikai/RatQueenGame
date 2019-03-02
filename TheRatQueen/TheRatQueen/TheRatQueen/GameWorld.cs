@@ -15,11 +15,17 @@ namespace TheRatQueen
     {
         static  GraphicsDeviceManager graphics;
 
+
+        List<GameObject> go = new List<GameObject>();
+        List<GameObject> RemoveObject = new List<GameObject>();
+
         SpriteBatch spriteBatch;
 
        // List<GameObject> gameObjects = new List<GameObject>();
         GameObject player;
         GameObject gameObject;
+
+        InputHandler InputHandler;
         public GameWorld()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -47,7 +53,7 @@ namespace TheRatQueen
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
+            InputHandler = new InputHandler();
             player = new GameObject();
             player.AddComponent(new Player());
             player.AddComponent(new SpriteRendere("ratQueen"));
@@ -89,6 +95,7 @@ namespace TheRatQueen
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
+            player.Update(gameTime);
             // TODO: Add your update logic here
 
             base.Update(gameTime);
