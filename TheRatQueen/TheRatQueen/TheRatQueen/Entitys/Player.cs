@@ -24,9 +24,7 @@ namespace TheRatQueen
         public int gravity;
 
         public bool Jump;
-        
-
-
+       
 
 
         public Player( )

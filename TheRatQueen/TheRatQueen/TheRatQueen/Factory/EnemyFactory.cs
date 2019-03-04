@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TheRatQueen.Input
+namespace TheRatQueen.Factory
 {
-    class Factory
+    class EnemyFactory
     {
     }
 }

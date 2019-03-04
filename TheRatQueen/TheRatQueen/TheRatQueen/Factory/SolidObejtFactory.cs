@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TheRatQueen.Factory
 {
-    class ConcreteProduct
+    class SolidObejtFactory
     {
     }
 }
