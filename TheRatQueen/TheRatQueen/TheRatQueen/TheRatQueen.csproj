@@ -47,10 +47,10 @@
     <Compile Include="Entitys\Enemy.cs" />
     <Compile Include="Entitys\EnemySimpel.cs" />
     <Compile Include="Entitys\Player.cs" />
-    <Compile Include="Factory\ConcreatFactory.cs" />
-    <Compile Include="Factory\ConcreteProduct.cs" />
-    <Compile Include="Factory\Factory.cs" />
-    <Compile Include="Factory\Product.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="Factory\EnemyFactory.cs" />
+    <Compile Include="Factory\PlayerFactory.cs" />
+    <Compile Include="Factory\SolidObejtFactory.cs" />
     <Compile Include="GameWorld.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="Input\InputHandler.cs" />
