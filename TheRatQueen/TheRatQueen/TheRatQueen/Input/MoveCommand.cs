@@ -12,18 +12,18 @@ namespace TheRatQueen
     class MoveCommand
     {
 
-        private Vector2 Velocity;
+        //private Vector2 Velocity;
 
-        public MoveCommand(Vector2 velocity)
-        {
-            this.Velocity = velocity;
-        }
+        //public MoveCommand(Vector2 velocity)
+        //{
+        //    this.Velocity = velocity;
+        //}
 
-        public void Execute(GameTime gameTime , Player player, Vector2 velocity)
-        {
-            this.Velocity = velocity;
-            player.Move( velocity);
+        //public void Execute(GameTime gameTime , Player player, Vector2 velocity)
+        //{
+        //    this.Velocity = velocity;
+        //    player.Move( velocity);
 
-        }
+        //}
     }
 }

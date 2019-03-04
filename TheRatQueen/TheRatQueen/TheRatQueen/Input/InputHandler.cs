@@ -28,17 +28,12 @@ namespace TheRatQueen
 
                 return instance;
             }
-
         }
-
-
         public InputHandler()
         {
             Keybinds.Add(Keys.A, new Vector2(-10, 0));
             Keybinds.Add(Keys.D, new Vector2(10, 0));
         }
-
-
         public void Execute( Player player)
         {
 

@@ -10,7 +10,7 @@ using Microsoft.Xna.Framework.Input;
 using System.Windows.Input;
 namespace TheRatQueen
 {
-   public class Player : Componet
+   public class Player : Componet 
     {
   
         public float speed = 100; 
@@ -18,7 +18,16 @@ namespace TheRatQueen
         public float size = 0.2f;
         float deltaTime;
         public float RotationAngle { get; set; }
-     
+
+
+        public int force;
+        public int gravity;
+
+        public bool Jump;
+        
+
+
+
 
         public Player( )
         {

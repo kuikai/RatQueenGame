@@ -15,7 +15,7 @@ namespace TheRatQueen
     {
         static  GraphicsDeviceManager graphics;
 
-
+      public static List<GameObject> gameObjects = new List<GameObject>();
       public static List<GameObject> TobeAddGo = new List<GameObject>();
       public static List<GameObject> RemoveObject = new List<GameObject>();
 
@@ -42,7 +42,8 @@ namespace TheRatQueen
 
         public static void RemoveGameObject(GameObject game)
         {
-            RemoveObject.Add8
+            RemoveObject.Add(game);
+
         }
 
         public static Rectangle ScreenSize
@@ -67,9 +68,8 @@ namespace TheRatQueen
             player = new GameObject();
             player.AddComponent(new Player());
             player.AddComponent(new SpriteRendere("ratQueen"));
-            gameObject = new GameObject();
-            
 
+            gameObjects.Add(player);
      
             base.Initialize();
         }
@@ -82,7 +82,14 @@ namespace TheRatQueen
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            player.loadContent(Content);
+
+
+            foreach (GameObject go in gameObjects)
+            {
+                go.loadContent(Content);
+            }
+
+           // player.loadContent(Content);
             // TODO: use this.Content to load your game content here
         }
 
@@ -105,9 +112,15 @@ namespace TheRatQueen
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            player.Update(gameTime);
+            foreach (GameObject go in gameObjects)
+            {
+                go.Update(gameTime);
+            }
+
+          //  player.Update(gameTime);
             // TODO: Add your update logic here
 
+            RemoveObject.Clear();
             base.Update(gameTime);
         }
 
@@ -121,7 +134,12 @@ namespace TheRatQueen
 
             spriteBatch.Begin();
 
-            player.draw(spriteBatch);
+            foreach(GameObject go in gameObjects)
+            {
+                go.draw(spriteBatch);
+            }
+
+          //  player.draw(spriteBatch);
 
             spriteBatch.End();
             // TODO: Add your drawing code here
