@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace TheRatQueen
 {
-    class Factory
+   public abstract class Factorye
     {
+        public abstract GameObject Create(string type);
     }
 }
