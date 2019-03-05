@@ -13,9 +13,9 @@ namespace TheRatQueen
      public class SpriteRendere : Componet
     {
 
-        public Rectangle rectangle;
+        public Rectangle rectangle { get; set; }
 
-        public Vector2 orgin;
+        public Vector2 orgin { get; set; }
 
         public string spriteName;
 
