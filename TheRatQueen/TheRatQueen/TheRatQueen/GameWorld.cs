@@ -1,59 +1,47 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-namespace TheRatQueen
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Audio;
+using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
+
+namespace SpaceGame
 {
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
     public class GameWorld : Game
     {
-        static  GraphicsDeviceManager graphics;
-
-      public static List<GameObject> gameObjects = new List<GameObject>();
-      public static List<GameObject> TobeAddGo = new List<GameObject>();
-      public static List<GameObject> RemoveObject = new List<GameObject>();
-
+        private static GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
-
-       // List<GameObject> gameObjects = new List<GameObject>();
-        GameObject player;
+     
+        InputHandler inputHandler = new InputHandler();
         GameObject gameObject;
+      
+        GameObject Playergo;
+        Texture2D sprite;
+        SpriteRendere spriteRendere;
+        Componet com;
+        //Player player;
+        //Player player2;
+        
+        private SpriteFont KillCount;
+        public  int screensizeheigt;
+       public  int screemSizewrith;
 
-        InputHandler InputHandler;
+
         public GameWorld()
         {
             graphics = new GraphicsDeviceManager(this);
-
+            Content.RootDirectory = "Content";
+        
             graphics.PreferredBackBufferWidth = 1280;
             graphics.PreferredBackBufferHeight = 720;
-            Content.RootDirectory = "Content";
         }
-         
-        public static void addGameObject(GameObject game)
-        {
-            TobeAddGo.Add(game);
-        }
-
-        public static void RemoveGameObject(GameObject game)
-        {
-            RemoveObject.Add(game);
-
-        }
-
-        public static Rectangle ScreenSize
-        {
-            get
-            {
-                return graphics.GraphicsDevice.Viewport.Bounds;
-            }
-        }
-
 
         /// <summary>
         /// Allows the game to perform any initialization it needs to before starting to run.
@@ -64,33 +52,52 @@ namespace TheRatQueen
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            InputHandler = new InputHandler();
-            player = new GameObject();
-            player.AddComponent(new Player());
-            player.AddComponent(new SpriteRendere("ratQueen"));
+            screensizeheigt = graphics.PreferredBackBufferHeight;
+            screemSizewrith = graphics.PreferredBackBufferWidth;
 
-            gameObjects.Add(player);
-     
+            Playergo = new GameObject();
+            Playergo.AddComponent(new Player(new Vector2(200, 200)));
+            Playergo.AddComponent(new SpriteRendere(5, "PlayerSheet"));
             base.Initialize();
         }
+        public static Rectangle ScreenSize
+        {
+            get
+            {
+                return graphics.GraphicsDevice.Viewport.Bounds;
+            }
+        }
+
 
         /// <summary>
         /// LoadContent will be called once per game and is the place to load
         /// all of your content.
-        /// </summary>
+        /// </summary
+     
+       
         protected override void LoadContent()
         {
+            
+         //   sprite = Content.Load<Texture2D>("PlayerSheet");
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            Vector2 postion = new Vector2(screemSizewrith/2, 600);
+            //player = new Player(new Vector2(screemSizewrith/2,screensizeheigt+100),5 , "PlayerSheet");         
+           gameObject = new GameObject();
+            Playergo.LoadContent(Content);
+   
+           //spriteRendere = new SpriteRendere(new Vector2(400, 400), 5, "PlayerSheet");
+           //spriteRendere.LoadContet(Content);
 
+           // player.LoadContet(Content);
+            //gameObject.AddComponent(player);
+            //gameObject.AddComponent(player2);
+            gameObject.LoadContent(Content);
+           // player.LoadContet(Content);
+            inputHandler.inputHandler();
+            KillCount = Content.Load<SpriteFont>("Text");
 
-            foreach (GameObject go in gameObjects)
-            {
-                go.loadContent(Content);
-            }
-
-           // player.loadContent(Content);
-            // TODO: use this.Content to load your game content here
+            //// TODO: use this.Content to load your game content here
         }
 
         /// <summary>
@@ -111,16 +118,10 @@ namespace TheRatQueen
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
+         
 
-            foreach (GameObject go in gameObjects)
-            {
-                go.Update(gameTime);
-            }
-
-          //  player.Update(gameTime);
-            // TODO: Add your update logic here
-
-            RemoveObject.Clear();
+            //inputHandler.Ecervute(gameTime,player );
+         
             base.Update(gameTime);
         }
 
@@ -132,18 +133,14 @@ namespace TheRatQueen
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+        
+            // TODO: Add your drawing code here
             spriteBatch.Begin();
 
-            foreach(GameObject go in gameObjects)
-            {
-                go.draw(spriteBatch);
-            }
-
-          //  player.draw(spriteBatch);
-
+            Playergo.draw(spriteBatch);
+             //gameObject.draw(spriteBatch);
+            spriteBatch.DrawString(KillCount, $"Rotetio", new Vector2(1160, 5), Color.Red);
             spriteBatch.End();
-            // TODO: Add your drawing code here
-
             base.Draw(gameTime);
         }
     }

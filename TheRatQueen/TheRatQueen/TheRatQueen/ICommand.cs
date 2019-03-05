@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TheRatQueen.Factory
+namespace SpaceGame
 {
-    class SolidObejtFactory
+    interface ICommand
     {
-    }
+
+       
+     }
 }

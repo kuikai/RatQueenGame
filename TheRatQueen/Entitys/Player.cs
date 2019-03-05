@@ -12,20 +12,17 @@ namespace TheRatQueen
 {
    public class Player : Componet 
     {
-  
         public float speed = 100; 
         public Vector2 StartPos;
         public float size = 0.2f;
         float deltaTime;
         public float RotationAngle { get; set; }
 
-
         public int force;
         public int gravity;
 
         public bool Jump;
-       
-
+     
 
         public Player( )
         {
@@ -36,6 +33,10 @@ namespace TheRatQueen
         {
             this.StartPos = pos;
         }
+        public void Gravity()
+        {
+
+        }
         public void SetRotationAngle(Vector2 directon)
         {    
             if(directon.X < 0 )
@@ -45,27 +46,22 @@ namespace TheRatQueen
             else
             {
                 GameObject.transform.s = SpriteEffects.None;
-            }
-            
+            }            
          // GameObject.transform.rotetion =  (float)Math.Atan2(directon.Y, directon.X);
-
         }
         public void rotetion()
         {
-            
+           
         }
         public void Move( Vector2 velocity)
-        {
-          
+        {        
             GameObject.transform.Position += velocity;
             SetRotationAngle(velocity);
-        }
-         
+        }        
         public override void Update(GameTime gameTime)
-        {
-            
+        {          
             InputHandler.Instance.Execute(this);
-
+            GameWorld.GetPlayerPosition(GameObject.transform.Position);
             deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
         public override void Attach(GameObject gameObject)

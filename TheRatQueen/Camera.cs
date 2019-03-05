@@ -43,7 +43,7 @@ namespace TheRatQueen
 
             centre = position;
 
-            tranform = Matrix.CreateTranslation(new Vector3(-centre.X, -centre.Y, 0))
+            tranform = Matrix.CreateTranslation(new Vector3(/*-centre.X,*/-viewport.Width/2, -centre.Y, 0))
                 * Matrix.CreateTranslation(viewport.Width / 2, viewport.Height / 2, 0);
         }
 

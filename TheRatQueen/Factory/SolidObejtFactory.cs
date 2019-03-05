@@ -7,50 +7,45 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
-
-namespace TheRatQueen
-{ 
-    class PlayerFactory : Factorye
+namespace TheRatQueen.Factory
+{
+    class SolidObejtFactory
     {
-        public static PlayerFactory instance;
 
-       
-        
-        public static PlayerFactory Instance
+        private static SolidObejtFactory instance;
+
+        public static SolidObejtFactory Instance
         {
             get
             {
                 if (instance == null)
                 {
-
-                    instance = new PlayerFactory();
+                    instance = new SolidObejtFactory();
                 }
                 return instance;
             }
+      
         }
 
-        private PlayerFactory()
-        {
-
-        }
-
-        public override GameObject Create(string type)
+      public GameObject Create(string type)
         {
             GameObject go = new GameObject();
 
+
             switch (type)
             {
-                case "ratQueen":
+                case "surepipe":
 
-                    go.AddComponent(new Player());
-                    go.AddComponent(new SpriteRendere(type));
-
+                    go.AddComponent(new solidObjet1(new Vector2(100, 100), 1));
+                    go.AddComponent(new SpriteRendere("surepipe"));
+                   // go.AddComponent(new ); mangler colider
                     break;
-
+                default:
+                    break;
             }
 
             return go;
+
         }
 
     }

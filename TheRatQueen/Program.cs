@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace SpaceGame
+namespace TheRatQueen
 {
 #if WINDOWS || LINUX
     /// <summary>
