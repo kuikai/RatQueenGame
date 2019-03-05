@@ -42,7 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Camera.cs" />
-    <Compile Include="Collision.cs" />
+    <Compile Include="Componts\Collision.cs" />
     <Compile Include="Componts\Componet.cs" />
     <Compile Include="Entitys\Enemy.cs" />
     <Compile Include="Entitys\EnemySimpel.cs" />

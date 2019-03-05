@@ -22,6 +22,7 @@ namespace TheRatQueen
         public static List<GameObject> gameObjects  = new List<GameObject>();
         public static List<GameObject> TobeAddGo = new List<GameObject>();
         public static List<GameObject> RemoveObject = new List<GameObject>();
+        public List<Collision> Colliders { get; set; } = new List<Collision>();
 
         public SpriteFont font;
       
@@ -37,6 +38,19 @@ namespace TheRatQueen
         //GameObject gameObject;
 
         InputHandler InputHandler;
+        public static GameWorld Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new GameWorld();
+                }
+
+                return instance;
+            }
+        }
+
         public GameWorld()
         {
             graphics = new GraphicsDeviceManager(this);
