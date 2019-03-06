@@ -10,6 +10,7 @@ namespace TheRatQueen
     {
         public abstract GameObject Create(string type);
 
+        public abstract GameObject[] Creates(string type);
        
     }
 }

@@ -49,6 +49,10 @@ namespace TheRatQueen
             }
             return go;
         }
+        public override GameObject[] Creates(string type)
+        {
+            throw new NotImplementedException();
+        }
 
     }
 }

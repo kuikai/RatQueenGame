@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 namespace TheRatQueen
 {
-    public class SolidObejtFactory
+    public class SolidObejtFactory : Factorye
     {
 
         private static SolidObejtFactory instance;
@@ -28,17 +28,18 @@ namespace TheRatQueen
       
         }
 
+
       
         
-        public GameObject Create(string type)
+        public override GameObject Create(string type)
         {
+           
             GameObject go = new GameObject();
-
            
             switch (type)
             {
                 case "pipe":
-
+                   
                     go.AddComponent(new solidObjet1(new Vector2(600,600), 1));
                     go.AddComponent(new SpriteRendere("pipe"));
                     go.AddComponent(new Collision() );
@@ -53,6 +54,8 @@ namespace TheRatQueen
             return go;
 
         }
+
+
 
     }
 }
