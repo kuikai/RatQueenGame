@@ -9,7 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace TheRatQueen
     {
-        class Collision : Componet
+        public  class Collision : Componet
 
         {
             public SpriteRendere spriteRendere { get; private set; }
@@ -20,7 +20,7 @@ namespace TheRatQueen
 
             private Texture2D texture;
 
-            private HashSet<Collision> otherColliders = new HashSet<Collision>();
+            public HashSet<Collision> otherColliders = new HashSet<Collision>();
 
             public Rectangle CollisionBox
             {
@@ -56,6 +56,7 @@ namespace TheRatQueen
             {
                 CheckColliders();
             }
+
 
 
         }
