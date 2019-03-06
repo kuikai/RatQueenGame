@@ -13,7 +13,11 @@ namespace TheRatQueen
 {
     class InputHandler
     {
+
+        KeyboardState state = new KeyboardState();
         private Dictionary<Keys, Vector2> Keybinds = new Dictionary<Keys, Vector2>();
+
+        private Dictionary<Keys, Vector2> keyClicks = new Dictionary<Keys, Vector2>();
 
         private static InputHandler instance;
 
