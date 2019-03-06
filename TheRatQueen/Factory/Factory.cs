@@ -9,5 +9,7 @@ namespace TheRatQueen
    public abstract class Factorye
     {
         public abstract GameObject Create(string type);
+
+       
     }
 }

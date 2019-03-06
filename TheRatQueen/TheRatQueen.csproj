@@ -54,7 +54,6 @@
     <Compile Include="Factory\SolidObejtFactory.cs" />
     <Compile Include="GameWorld.cs" />
     <Compile Include="GameObject.cs" />
-    <Compile Include="Gravity.cs" />
     <Compile Include="Input\InputHandler.cs" />
     <Compile Include="Input\MoveCommand.cs" />
     <Compile Include="obj\x86\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />

@@ -7,13 +7,14 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-namespace TheRatQueen.Factory
+namespace TheRatQueen
 {
-    class SolidObejtFactory
+    public class SolidObejtFactory
     {
 
         private static SolidObejtFactory instance;
 
+        
         public static SolidObejtFactory Instance
         {
             get
@@ -27,19 +28,24 @@ namespace TheRatQueen.Factory
       
         }
 
-      public GameObject Create(string type)
+      
+        
+        public GameObject Create(string type)
         {
             GameObject go = new GameObject();
 
-
+           
             switch (type)
             {
-                case "surepipe":
+                case "pipe":
 
-                    go.AddComponent(new solidObjet1(new Vector2(100, 100), 1));
-                    go.AddComponent(new SpriteRendere("surepipe"));
-                   // go.AddComponent(new ); mangler colider
+                    go.AddComponent(new solidObjet1(new Vector2(600,600), 1));
+                    go.AddComponent(new SpriteRendere("pipe"));
+                    go.AddComponent(new Collision() );
                     break;
+
+         
+           
                 default:
                     break;
             }

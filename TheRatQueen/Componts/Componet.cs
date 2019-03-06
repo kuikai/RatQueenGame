@@ -16,6 +16,7 @@ namespace TheRatQueen
 
          public  GameObject GameObject { get;private set; }
 
+        protected bool Isfalling = true;
 
      
         public virtual void Attach(GameObject gameObject)
@@ -40,6 +41,10 @@ namespace TheRatQueen
             
         }
 
+        public virtual void DoColision(GameObject gameObject)
+        {
 
+        }
+        
     }
 }

@@ -17,12 +17,13 @@ namespace TheRatQueen
         private List<Componet> componets = new List<Componet>();
 
         public Transform transform { get; private set; }
+        
 
 
         public GameObject()
         {
             this.transform = new Transform(Vector2.Zero);
-
+           
             AddComponent(transform);
 
 

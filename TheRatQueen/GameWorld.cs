@@ -24,6 +24,7 @@ namespace TheRatQueen
         public static List<GameObject> RemoveObject = new List<GameObject>();
         public List<Collision> Colliders { get; set; } = new List<Collision>();
 
+        
         public SpriteFont font;
       
         public Vector2 WorldZice;
@@ -96,6 +97,8 @@ namespace TheRatQueen
         /// related content.  Calling base.Initialize will enumerate through any components
         /// and initialize them as well.
         /// </summary>
+        /// 
+        Random rand = new Random();
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
@@ -103,10 +106,15 @@ namespace TheRatQueen
             WorldZice = new Vector2(GraphicsDevice.Viewport.Height, GraphicsDevice.Viewport.Height);
             InputHandler = new InputHandler();
 
-           
-             gameObjects.Add(PlayerFactory.Instance.Create("ratQueen"));
-          
-            
+            camera = new Camera(graphics.GraphicsDevice.Viewport);
+            gameObjects.Add(PlayerFactory.Instance.Create("ratQueen"));
+
+
+            gameObjects.Add(SolidObejtFactory.Instance.Create("pipe"));
+        
+            gameObjects.Add(SolidObejtFactory.Instance.Create("pipe"));
+
+             gameObjects.Add(SolidObejtFactory.Instance.Create("pipe"));
 
             base.Initialize();
         }
@@ -119,14 +127,18 @@ namespace TheRatQueen
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-           // camera = new Camera(graphics.GraphicsDevice.Viewport);
+  
             font = Content.Load<SpriteFont>("PlayerPosition");
             foreach (GameObject go in gameObjects)
             {
                 go.loadContent(Content);
             }
           
-           // player.loadContent(Content);
+
+
+
+
+            // player.loadContent(Content);
             // TODO: use this.Content to load your game content here
         }
 
@@ -151,12 +163,18 @@ namespace TheRatQueen
             foreach (GameObject go in gameObjects)
             {
                 go.Update(gameTime);
-                
+
+                //Checke For Colisitions
+
+                foreach (GameObject other in gameObjects)
+                {
+                    
+                }
             }
-           // camera.update(playerPositon);
-          //  player.Update(gameTime);
+            camera.update(playerPositon);
+       
             // TODO: Add your update logic here
-           // RemoveObject.Clear();
+            // RemoveObject.Clear();
             base.Update(gameTime);
         }
 
@@ -168,23 +186,22 @@ namespace TheRatQueen
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            //  spriteBatch.Begin(SpriteSortMode.Deferred,
-            //    BlendState.AlphaBlend, null, null, null, null, camera.Transform);
+            spriteBatch.Begin(SpriteSortMode.Deferred,
+              BlendState.AlphaBlend, null, null, null, null, camera.Transform);
 
 
-            spriteBatch.Begin();
             foreach(GameObject go in gameObjects)
             {
                 go.draw(spriteBatch);
             }
-
            
+
 
             spriteBatch.End();
 
             // fonts
             spriteBatch.Begin();
-            spriteBatch.DrawString(font, $"next wave in:{playerPositon}", new Vector2(580, 5), Color.Red);
+            spriteBatch.DrawString(font, $"Player Position:{playerPositon}", new Vector2(580, 5), Color.Red);
             spriteBatch.End();
             // TODO: Add your drawing code here
 

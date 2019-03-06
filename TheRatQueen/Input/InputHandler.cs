@@ -14,7 +14,7 @@ namespace TheRatQueen
     class InputHandler
     {
 
-        KeyboardState state = new KeyboardState();
+        KeyboardState laststate= new KeyboardState();
         private Dictionary<Keys, Vector2> Keybinds = new Dictionary<Keys, Vector2>();
 
         private Dictionary<Keys, Vector2> keyClicks = new Dictionary<Keys, Vector2>();
@@ -35,8 +35,9 @@ namespace TheRatQueen
         }
         public InputHandler()
         {
-            Keybinds.Add(Keys.A, new Vector2(-10, 0));
-            Keybinds.Add(Keys.D, new Vector2(10, 0));
+            Keybinds.Add(Keys.A, new Vector2(-1, 0));
+            Keybinds.Add(Keys.D, new Vector2(1, 0));
+            keyClicks.Add(Keys.Space, new Vector2(0, -1));
         }
         public void Execute( Player player)
         {
@@ -50,6 +51,17 @@ namespace TheRatQueen
                 {
                     player.Move( item.Value);
                 }
+            }
+            foreach (KeyValuePair<Keys, Vector2> item  in keyClicks)
+            {
+
+
+                if (keyStart.IsKeyDown(item.Key)&& laststate.IsKeyUp(item.Key))
+                {
+                    player.Move(item.Value);
+
+                }
+                laststate = keyStart;
             }
         }
     }

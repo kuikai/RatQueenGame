@@ -12,18 +12,32 @@ namespace TheRatQueen
 {
    public class Player : Componet 
     {
-        public float speed = 100; 
+
+        // playStats
+        public float speed = 10; 
         public Vector2 StartPos;
-        public float size = 0.2f;
-        float deltaTime;
-        public float RotationAngle { get; set; }
-
-        public int force;
-        public int gravity;
-
-        public bool Jump;
+        public float size = 1f;
      
+        float deltaTime;
+       
 
+       
+        /// <summary>
+        /// Gravity
+        /// </summary>
+        public Vector2 gravity = Vector2.Zero;
+        public float acceleration = 9.8f;
+
+
+        public Vector2 jumpforce = new Vector2(0,-10);
+        float startTime = 0;
+         
+        /// <summary>
+        ///   jump
+        /// </summary>
+        public bool Jump;
+
+   
         public Player( )
         {
           
@@ -33,10 +47,8 @@ namespace TheRatQueen
         {
             this.StartPos = pos;
         }
-        public void Gravity()
-        {
-
-        }
+          
+        
         public void SetRotationAngle(Vector2 directon)
         {    
             if(directon.X < 0 )
@@ -49,26 +61,71 @@ namespace TheRatQueen
             }            
          // GameObject.transform.rotetion =  (float)Math.Atan2(directon.Y, directon.X);
         }
-        public void rotetion()
+  
+       
+        
+        public void Gravity(GameTime gameTime)
         {
-           
+            if (GameObject.transform.Ifalling == true)
+            {
+                startTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
+                gravity.Y += acceleration * startTime / 10;
+                GameObject.transform.Position += gravity;
+            }else if(GameObject.transform.Ifalling == false)
+            {
+                gravity = Vector2.Zero;
+                startTime = 0;
+                Jump = false;
+            }
+          
         }
+
         public void Move( Vector2 velocity)
         {        
-            GameObject.transform.Position += velocity;
+            if(velocity != Vector2.Zero)
+            {
+
+                velocity.Normalize();
+            }
+
+            if (velocity.Y <= -0.01)
+            {
+                Jump = true;
+            }
+
+            GameObject.transform.Position += velocity *speed ;
             SetRotationAngle(velocity);
-        }        
+        }  
+        
         public override void Update(GameTime gameTime)
-        {          
+        {
+
+            if(Jump == true)
+            {
+
+
+                GameObject.transform.Position += jumpforce;
+            }
+           
+
+            
+            Gravity(gameTime);
             InputHandler.Instance.Execute(this);
             GameWorld.GetPlayerPosition(GameObject.transform.Position);
             deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds;
         }
+
         public override void Attach(GameObject gameObject)
         {
             base.Attach(gameObject);
             gameObject.transform.Position = StartPos;
             gameObject.transform.Siz = size;
         }
+
+        public override void DoColision(GameObject OtherObejt)
+        {
+
+        }
+
     }
 }

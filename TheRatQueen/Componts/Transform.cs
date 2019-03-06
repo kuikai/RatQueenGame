@@ -17,9 +17,11 @@ namespace TheRatQueen
         public float rotetion { get; set; }
         public float Siz { get; set; }
         public SpriteEffects s { get; set; }
+        public bool Ifalling { get; set; }
 
         public Transform(Vector2 transfrom)
         {
+            Ifalling = true;
             this.Position = transfrom;
             Siz = 1;
             rotetion = 0;
