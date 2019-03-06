@@ -43,6 +43,7 @@ namespace TheRatQueen
                 default:
                     go.AddComponent(new Player());
                     go.AddComponent(new SpriteRendere("ratQueen"));
+                    go.AddComponent(new Collision());
                     break;
 
             }

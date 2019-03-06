@@ -119,7 +119,7 @@ namespace TheRatQueen
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-            camera = new Camera(graphics.GraphicsDevice.Viewport);
+           // camera = new Camera(graphics.GraphicsDevice.Viewport);
             font = Content.Load<SpriteFont>("PlayerPosition");
             foreach (GameObject go in gameObjects)
             {
@@ -153,7 +153,7 @@ namespace TheRatQueen
                 go.Update(gameTime);
                 
             }
-            camera.update(playerPositon);
+           // camera.update(playerPositon);
           //  player.Update(gameTime);
             // TODO: Add your update logic here
            // RemoveObject.Clear();
@@ -168,11 +168,11 @@ namespace TheRatQueen
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            spriteBatch.Begin(SpriteSortMode.Deferred,
-                BlendState.AlphaBlend, null, null, null, null, camera.Transform);
+            //  spriteBatch.Begin(SpriteSortMode.Deferred,
+            //    BlendState.AlphaBlend, null, null, null, null, camera.Transform);
 
 
-           
+            spriteBatch.Begin();
             foreach(GameObject go in gameObjects)
             {
                 go.draw(spriteBatch);
