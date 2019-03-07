@@ -14,7 +14,7 @@ namespace TheRatQueen
     {
         public SpriteRendere spriteRendere { get; private set; }
 
-
+       
 
         public bool DoCollisionsChecks { get; set; }
 
@@ -59,7 +59,7 @@ namespace TheRatQueen
         public override void Draw(SpriteBatch spriteBatch)
         {
         
-            Rectangle topLine = new Rectangle(CollisionBox.X, CollisionBox.Y, CollisionBox.Width, 1);
+            Rectangle topLine = new Rectangle(CollisionBox.X, CollisionBox.Y, CollisionBox.Width,1);
             Rectangle bottomLine = new Rectangle(CollisionBox.X, CollisionBox.Y + CollisionBox.Height, CollisionBox.Width, 1);
             Rectangle rightLine = new Rectangle(CollisionBox.X + CollisionBox.Width, CollisionBox.Y, 1, CollisionBox.Height);
             Rectangle leftLine = new Rectangle(CollisionBox.X, CollisionBox.Y, 1, CollisionBox.Height);
@@ -80,9 +80,10 @@ namespace TheRatQueen
                     {
                         if (CollisionBox.Intersects(other.CollisionBox))
                         {
-
-                            GameObject.transform.Ifalling = false;
-
+                           
+                            
+                           GameObject.transform.Ifalling = false;
+                            
                             if (!otherColliders.Contains(other))
                             {
                                 

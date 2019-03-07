@@ -49,8 +49,16 @@ namespace TheRatQueen
             }
             return go;
         }
-        public override GameObject[] Creates(string type)
+
+        public override GameObject[] Creates(string type, int Howmeny)
         {
+
+
+
+            GameObject[] gos = new GameObject[Howmeny];
+
+
+
             throw new NotImplementedException();
         }
 

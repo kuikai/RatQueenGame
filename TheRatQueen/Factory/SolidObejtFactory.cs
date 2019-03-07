@@ -14,7 +14,7 @@ namespace TheRatQueen
 
         private static SolidObejtFactory instance;
 
-        
+        Random rand = new Random();
         public static SolidObejtFactory Instance
         {
             get
@@ -55,7 +55,41 @@ namespace TheRatQueen
 
         }
 
+        public override GameObject[] Creates(string type, int Howmeny)
+        {
 
 
+            Random rand = new Random();
+            int x=600;
+            int y=600;
+            GameObject[] gos = new GameObject[Howmeny];
+
+            switch (type)
+            {
+                case "pipe":
+
+                    for (int i =0; i < Howmeny; i++)
+                    {
+                       
+                        gos[i] = new GameObject();
+                        gos[i].AddComponent(new solidObjet1(new Vector2(x, y), 1));
+                        gos[i].AddComponent(new SpriteRendere("pipe"));
+                        gos[i].AddComponent(new Collision());
+
+
+                        x = rand.Next(100, 1000);
+                        y -= 200;
+
+                    }
+
+                    break;
+                default:
+                    break;
+            }
+
+
+            
+            return gos;
+        }
     }
 }

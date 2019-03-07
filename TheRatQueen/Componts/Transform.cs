@@ -18,7 +18,7 @@ namespace TheRatQueen
         public float Siz { get; set; }
         public SpriteEffects s { get; set; }
         public bool Ifalling { get; set; }
-
+        
         public Transform(Vector2 transfrom)
         {
             Ifalling = true;

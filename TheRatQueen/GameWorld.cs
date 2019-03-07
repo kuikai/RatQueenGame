@@ -34,6 +34,8 @@ namespace TheRatQueen
         Camera camera;
         SpriteBatch spriteBatch;
 
+        public Texture2D Background;
+
         //List<GameObject> gameObjects = new List<GameObject>();
 
 
@@ -112,11 +114,9 @@ namespace TheRatQueen
             gameObjects.Add(PlayerFactory.Instance.Create("ratQueen"));
 
 
-            gameObjects.Add(SolidObejtFactory.Instance.Create("pipe"));
-        
-            gameObjects.Add(SolidObejtFactory.Instance.Create("pipe"));
-
-             gameObjects.Add(SolidObejtFactory.Instance.Create("pipe"));
+           gameObjects.Add(SolidObejtFactory.Instance.Create("pipe"));
+           gameObjects.AddRange( SolidObejtFactory.Instance.Creates("pipe", 100));
+           
 
             base.Initialize();
         }
@@ -133,21 +133,16 @@ namespace TheRatQueen
             Song song = Content.Load<Song>("Rat_Song");  
             MediaPlayer.Play(song);
 
+            Background = Content.Load<Texture2D>("cc_Cloaca-Massima_Cover-letter_PNAS_16x9");
             font = Content.Load<SpriteFont>("PlayerPosition");
-            MediaPlayer.Play(song);
+      
             foreach (GameObject go in gameObjects)
             {
                 go.loadContent(Content);
-            }
-          
-
-
-
-
-            // player.loadContent(Content);
+            }         
+      
             // TODO: use this.Content to load your game content here
         }
-
         /// <summary>
         /// UnloadContent will be called once per game and is the place to unload
         /// game-specific content.
@@ -171,7 +166,6 @@ namespace TheRatQueen
                 go.Update(gameTime);
 
                 //Checke For Colisitions
-
                 foreach (GameObject other in gameObjects)
                 {
                     
@@ -191,7 +185,13 @@ namespace TheRatQueen
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
+            spriteBatch.Begin();
 
+            Rectangle Rectangle;
+            spriteBatch.Draw(Background, Rectangle = new Rectangle(0, 0, Background.Width, Background.Height), Color.White);
+            spriteBatch.End();
+        
+            
             spriteBatch.Begin(SpriteSortMode.Deferred,
               BlendState.AlphaBlend, null, null, null, null, camera.Transform);
 
@@ -208,6 +208,8 @@ namespace TheRatQueen
             // fonts
             spriteBatch.Begin();
             spriteBatch.DrawString(font, $"Player Position:{playerPositon}", new Vector2(580, 5), Color.Red);
+        
+           
             spriteBatch.End();
             // TODO: Add your drawing code here
 

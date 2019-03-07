@@ -54,6 +54,20 @@ namespace TheRatQueen
         }
 
 
-      
+        public override GameObject[] Creates(string type, int Howmeny)
+        {
+
+
+
+            GameObject[] gos = new GameObject[Howmeny];
+            switch (type)
+            {
+                default:
+                    break;
+            }
+
+
+            throw new NotImplementedException();
+        }
     }
 }

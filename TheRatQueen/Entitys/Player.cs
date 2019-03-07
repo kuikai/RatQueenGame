@@ -19,7 +19,7 @@ namespace TheRatQueen
         public float size = 1f;
      
         float deltaTime;
-       
+        public Vector2 PlayerVelocity;
 
        
         /// <summary>
@@ -28,8 +28,8 @@ namespace TheRatQueen
         public Vector2 gravity = Vector2.Zero;
         public float acceleration = 9.8f;
 
-
-        public Vector2 jumpforce = new Vector2(0,-10);
+        public bool inAir = true;// vyder hedder isfaliing
+        public Vector2 jumpforce;
         float startTime = 0;
          
         /// <summary>
@@ -51,7 +51,7 @@ namespace TheRatQueen
         
         public void SetRotationAngle(Vector2 directon)
         {    
-            if(directon.X < 0 )
+            if(directon.X < -0.001 )
             {
                 GameObject.transform.s = SpriteEffects.FlipHorizontally;
             }
@@ -59,7 +59,7 @@ namespace TheRatQueen
             {
                 GameObject.transform.s = SpriteEffects.None;
             }            
-         // GameObject.transform.rotetion =  (float)Math.Atan2(directon.Y, directon.X);
+         
         }
   
        
@@ -71,13 +71,36 @@ namespace TheRatQueen
                 startTime += (float)gameTime.ElapsedGameTime.TotalSeconds;
                 gravity.Y += acceleration * startTime / 10;
                 GameObject.transform.Position += gravity;
-            }else if(GameObject.transform.Ifalling == false)
+
+            } else if( inAir == false && GameObject.transform.Ifalling ==false)
+
             {
                 gravity = Vector2.Zero;
                 startTime = 0;
                 Jump = false;
+                jumpforce = Vector2.Zero;
+                GameObject.transform.Position += gravity;
             }
-          
+
+            if (Jump == true )
+            {
+                inAir = true;
+
+                jumpforce = new Vector2(0, -11);
+
+                GameObject.transform.Position += jumpforce;
+              
+            }
+            if(PlayerVelocity.Y >= -1)
+            {
+                inAir = false;
+               
+
+
+            }
+
+            PlayerVelocity = gravity + jumpforce;
+         
         }
 
         public void Move( Vector2 velocity)
@@ -100,12 +123,6 @@ namespace TheRatQueen
         public override void Update(GameTime gameTime)
         {
 
-            if(Jump == true)
-            {
-
-
-                GameObject.transform.Position += jumpforce;
-            }
            
 
             
