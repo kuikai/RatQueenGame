@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
+using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -127,8 +129,12 @@ namespace TheRatQueen
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-  
+
+            Song song = Content.Load<Song>("Rat_Song");  
+            MediaPlayer.Play(song);
+
             font = Content.Load<SpriteFont>("PlayerPosition");
+            MediaPlayer.Play(song);
             foreach (GameObject go in gameObjects)
             {
                 go.loadContent(Content);
