@@ -26,10 +26,15 @@ namespace TheRatQueen
         public static List<GameObject> RemoveObject = new List<GameObject>();
         public List<Collision> Colliders { get; set; } = new List<Collision>();
 
+<<<<<<< HEAD:TheRatQueen/GameWorld.cs
         
         public SpriteFont font;
       
         public Vector2 WorldZice;
+=======
+        List<GameObject> go = new List<GameObject>();
+        List<GameObject> RemoveObject = new List<GameObject>();
+>>>>>>> parent of 9678262...  vvv:TheRatQueen/TheRatQueen/TheRatQueen/GameWorld.cs
 
         Camera camera;
         SpriteBatch spriteBatch;
@@ -64,6 +69,7 @@ namespace TheRatQueen
             graphics.PreferredBackBufferHeight = 720;
             Content.RootDirectory = "Content";
         }
+<<<<<<< HEAD:TheRatQueen/GameWorld.cs
          
         public static void addGameObject(GameObject game)
         {
@@ -75,6 +81,8 @@ namespace TheRatQueen
             RemoveObject.Add(game);
 
         }
+=======
+>>>>>>> parent of 9678262...  vvv:TheRatQueen/TheRatQueen/TheRatQueen/GameWorld.cs
 
         public static Rectangle ScreenSize
         {

@@ -14,38 +14,27 @@ namespace TheRatQueen
     {
 
         public Vector2 Position { get; set; }
+<<<<<<< HEAD:TheRatQueen/Componts/Transform.cs
         public float rotetion { get; set; }
         public float Siz { get; set; }
         public SpriteEffects s { get; set; }
         public bool Ifalling { get; set; }
         
+=======
+
+
+
+>>>>>>> parent of 9678262...  vvv:TheRatQueen/TheRatQueen/TheRatQueen/Componts/Transform.cs
         public Transform(Vector2 transfrom)
         {
             Ifalling = true;
             this.Position = transfrom;
-            Siz = 1;
-            rotetion = 0;
-            
-        }
-        
-        public Transform(Vector2 transform, float size)
-        {
-            this.Position = transform;
-            this.Siz = size;
         }
 
-        public Transform(Vector2 transfroom, float size, float rotetion)
-        {
-            this.Position = transfroom;
-            this.Siz = size;
-            this.rotetion = rotetion;
-        }
      
         public void Translate(Vector2 velocity)
         {
             Position = velocity;
         } 
-
-
     }
 }

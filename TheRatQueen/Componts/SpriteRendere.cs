@@ -29,8 +29,12 @@ namespace TheRatQueen
         public override void Draw(SpriteBatch spriteBatch)
         {
           
+<<<<<<< HEAD:TheRatQueen/Componts/SpriteRendere.cs
             spriteBatch.Draw(sprite, GameObject.transform.Position, rectangle, 
                 Color.White,GameObject.transform.rotetion , orgin, GameObject.transform.Siz, GameObject.transform.s, 0);
+=======
+            spriteBatch.Draw(sprite, GameObject.transform.Position, rectangle, Color.White, 0, orgin, 0.2f, SpriteEffects.None, 0);
+>>>>>>> parent of 9678262...  vvv:TheRatQueen/TheRatQueen/TheRatQueen/Componts/SpriteRendere.cs
         }
 
         public override void LoadContent(ContentManager content)

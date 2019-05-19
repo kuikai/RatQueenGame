@@ -57,8 +57,8 @@
 >>>>>>> parent of 4c4afe8... efsdf:TheRatQueen/TheRatQueen/TheRatQueen/TheRatQueen.csproj
     <Compile Include="GameWorld.cs" />
     <Compile Include="GameObject.cs" />
-    <Compile Include="Input\InputHandler.cs" />
-    <Compile Include="Input\MoveCommand.cs" />
+    <Compile Include="InputHandler.cs" />
+    <Compile Include="MoveCommand.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
