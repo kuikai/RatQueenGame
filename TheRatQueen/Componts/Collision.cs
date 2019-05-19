@@ -8,8 +8,16 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace TheRatQueen
+<<<<<<< HEAD
 {
     public class Collision : Componet
+=======
+    {
+        class Collision : Componet
+
+        {
+            public SpriteRendere spriteRendere { get; private set; }
+>>>>>>> parent of 22c1acc... Merge branch 'master' of https://github.com/kuikai/RatQueenGame
 
     {
         public SpriteRendere spriteRendere { get; private set; }
@@ -20,7 +28,11 @@ namespace TheRatQueen
 
         private Texture2D texture;
 
+<<<<<<< HEAD
         public HashSet<Collision> otherColliders = new HashSet<Collision>();
+=======
+            private HashSet<Collision> otherColliders = new HashSet<Collision>();
+>>>>>>> parent of 22c1acc... Merge branch 'master' of https://github.com/kuikai/RatQueenGame
 
         public Rectangle CollisionBox
         {
@@ -102,6 +114,11 @@ namespace TheRatQueen
                    
                 
             }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> parent of 22c1acc... Merge branch 'master' of https://github.com/kuikai/RatQueenGame
         }
     }
 }
